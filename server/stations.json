@@ -1,0 +1,52 @@
+[
+  {
+    "id": "st-1",
+    "name": "Tata Power EZ Fast Charger - Expressway Toll",
+    "coordinates": [77.4812, 28.4050],
+    "powerKw": 60,
+    "plugTypes": ["CCS2", "Type 2"],
+    "status": "Operational",
+    "lastVerified": "2026-10-25",
+    "verified": true
+  },
+  {
+    "id": "st-2",
+    "name": "Jio-bp Pulse Hub - Jewar Midway Plaza",
+    "coordinates": [77.6350, 28.1180],
+    "powerKw": 120,
+    "plugTypes": ["CCS2"],
+    "status": "Operational",
+    "lastVerified": "2026-10-28",
+    "verified": true
+  },
+  {
+    "id": "st-3",
+    "name": "Statiq EV Station - Mathura Bypass Stop",
+    "coordinates": [77.6890, 27.5340],
+    "powerKw": 50,
+    "plugTypes": ["CCS2", "GB/T"],
+    "status": "Degraded",
+    "lastVerified": "2026-08-10",
+    "verified": false
+  },
+  {
+    "id": "st-4",
+    "name": "ChargeZone Hypercharger - Agra Entry Terminal",
+    "coordinates": [77.9620, 27.2410],
+    "powerKw": 150,
+    "plugTypes": ["CCS2", "Type 2"],
+    "status": "Operational",
+    "lastVerified": "2026-10-29",
+    "verified": true
+  },
+  {
+    "id": "st-5",
+    "name": "Zeon Charging Hub - Tundla Junction",
+    "coordinates": [78.0410, 27.1950],
+    "powerKw": 25,
+    "plugTypes": ["Type 2"],
+    "status": "Offline",
+    "lastVerified": "2026-07-02",
+    "verified": false
+  }
+]
