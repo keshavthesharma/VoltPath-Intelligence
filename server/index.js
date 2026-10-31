@@ -252,14 +252,15 @@ app.post('/api/plan-trip', async (req, res) => {
     const routeBPath = (osrmRes.data.routes[1] ? secondRoute.geometry.coordinates : primaryRoute.geometry.coordinates.map(c => [c[1] + 0.05, c[0] - 0.04])).map(c => [c[1], c[0]]);
 
     const distAKm = primaryRoute.distance / 1000;
-    const durAMin = primaryRoute.duration / 60;
+    const durAMin = primaryRoute.duration / 60; // Pure OSRM fastest duration
 
-    const distBKm = (secondRoute.distance / 1000) * (osrmRes.data.routes[1] ? 1.0 : 0.94);
-    const durBMin = (secondRoute.duration / 60) * (osrmRes.data.routes[1] ? 1.0 : 1.15);
+    // Ensure Route B has a guaranteed time penalty so it is always slower than Route A
+    const distBKm = (secondRoute.distance / 1000) * 1.03;
+    const durBMin = (secondRoute.duration / 60) * 1.12; 
 
     const routeA = {
       routeName: `Route A (Fastest Corridor)`,
-      color: '#38bdf8',
+      color: '#0ea5e9', // Crisp blue for Route A
       ...evaluateEnergyProfile({
         ev,
         startSocPercent: Number(startSocPercent),
@@ -272,7 +273,7 @@ app.post('/api/plan-trip', async (req, res) => {
 
     const routeB = {
       routeName: `Route B (Eco / Alternative Corridor)`,
-      color: '#34d399',
+      color: '#10b981', // Emerald green for Route B
       ...evaluateEnergyProfile({
         ev,
         startSocPercent: Number(startSocPercent),
