@@ -171,7 +171,7 @@ export default function App() {
   const [showEvDropdown, setShowEvDropdown] = useState(false);
   const [startSoc, setStartSoc] = useState(100);
   const [origin, setOrigin] = useState('Connaught Place, New Delhi');
-  const [destination, setDestination] = useState('Chennai, Tamil Nadu');
+  const [destination, setDestination] = useState('Taj Mahal, Agra');
   const [activeRouteIndex, setActiveRouteIndex] = useState(0);
   const [tripData, setTripData] = useState(null);
   const [loading, setLoading] = useState(false);
