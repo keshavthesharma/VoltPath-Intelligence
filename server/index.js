@@ -249,7 +249,19 @@ app.post('/api/plan-trip', async (req, res) => {
 
     // OSRM coordinates are [lon, lat] -> convert to Leaflet's [lat, lon]
     const routeAPath = primaryRoute.geometry.coordinates.map(c => [c[1], c[0]]);
-    const routeBPath = (osrmRes.data.routes[1] ? secondRoute.geometry.coordinates : primaryRoute.geometry.coordinates.map(c => [c[1] + 0.05, c[0] - 0.04])).map(c => [c[1], c[0]]);
+    
+    // Fixed Route B path generation: Ensures start and end points lock onto exact coordinates
+    let routeBPath;
+    if (osrmRes.data.routes[1]) {
+      routeBPath = secondRoute.geometry.coordinates.map(c => [c[1], c[0]]);
+    } else {
+      routeBPath = primaryRoute.geometry.coordinates.map((c, index, arr) => {
+        if (index === 0 || index === arr.length - 1) {
+          return [c[1], c[0]]; // Exact anchor for start and end pins
+        }
+        return [c[1] + 0.03, c[0] - 0.025]; // Gentle curve offset for middle coordinates
+      });
+    }
 
     const distAKm = primaryRoute.distance / 1000;
     const durAMin = primaryRoute.duration / 60; // Pure OSRM fastest duration
